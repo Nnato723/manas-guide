@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Манас Guide — Путеводитель по местам эпоса</title>
+  <meta name="description" content="Туристический гид по Манастын күмбөзү, Кошой коргон, Кароол дөбө и другим местам эпоса Манас">
+  <meta property="og:title" content="Манас Guide" />
+  <meta property="og:description" content="Путеводитель по местам эпоса Манас" />
+  <meta property="og:image" content="../public/assets/images/manas-hero.jpg" />
+  <link rel="stylesheet" href="../src/css/main.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <!-- Header (единственный экземпляр) -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Манас Guide</a>
+
+      <nav class="main-nav" aria-label="Главная навигация">
+        <a href="index.html">Главная</a>
+        <a href="about.html">О проекте</a>
+        <a href="#places">Места</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switch" role="tablist" aria-label="Выбор языка">
+          <button class="lang" data-lang="ru">RU</button>
+          <button class="lang" data-lang="ky">KY</button>
+          <button class="lang" data-lang="en">EN</button>
+        </div>
+
+        <!-- мобильный гамбургер -->
+        <button id="menuToggle" class="menu-toggle" aria-label="Открыть меню" aria-expanded="false">
+          <span class="hamburger"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- мобильное меню (скрыто по умолчанию) -->
+    <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+      <div class="container">
+        <a href="index.html">Главная</a>
+        <a href="about.html">О проекте</a>
+        <a href="#places">Места</a>
+        <div class="mobile-lang">
+          <button class="lang" data-lang="ru">RU</button>
+          <button class="lang" data-lang="ky">KY</button>
+          <button class="lang" data-lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+ <section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="kicker">Путеводитель</div>
+      <h1 data-i18n="hero.title">Места эпоса «Манас»</h1>
+      <p class="hero-description" data-i18n="hero.subtitle">
+        Откройте для себя Манастын күмбөзү, Кошой коргон, Кароол дөбө и другие легендарные локации Кыргызстана.
+      </p>
+      
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#places" data-i18n="hero.cta1">Посмотреть места</a>
+        <a class="btn btn-ghost" href="about.html" data-i18n="hero.cta2">О проекте</a>
+      </div>
+
+      <div class="hero-meta">
+        <span class="badge">Маршруты</span>
+        <span class="meta-text">3 места • Истории • Карты</span>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="../public/assets/images/manas-hero.jpg" alt="Мавзолей Манаса">
+    </div>
+  </div>
+</section>
+
+
+  <!-- Places -->
+  <section id="places" class="places container" aria-labelledby="places-heading">
+    <h2 id="places-heading" data-i18n="places.heading">Популярные места</h2>
+    <div id="places-list" class="cards-grid" role="list"></div>
+  </section>
+
+  <!-- Map -->
+  <section class="map-section container" aria-labelledby="map-heading">
+    <h2 id="map-heading" data-i18n="map.heading">Карта мест</h2>
+    <div id="map" style="height:480px;"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <strong>Манас Guide</strong>
+        <div class="muted">© 2026</div>
+      </div>
+      <div class="footer-right">
+        <div>Контакты: <a href="mailto:Sharshenaliev_n@iuca.kg">Sharshenaliev_n@iuca.kg</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Скрипты: подключаем Leaflet и основной скрипт только один раз -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="../src/js/main.js"></script>
+</body>
+</html>
