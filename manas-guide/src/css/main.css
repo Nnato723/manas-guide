@@ -1,0 +1,327 @@
+:root{
+  --accent:#0b6efd;
+  --accent-2:#0a58ca;
+  --muted:#6b7280;
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --container:1200px;
+  --radius:12px;
+  --shadow: 0 8px 30px rgba(15,15,15,0.06);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial;
+  color-scheme: light;
+}
+
+/* Reset and base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:#0f1724;line-height:1.6;-webkit-font-smoothing:antialiased}
+.container{max-width:var(--container);margin:0 auto;padding:20px}
+
+/* Header */
+.site-header{
+  background:linear-gradient(180deg, #fff, #fbfdff);
+  border-bottom:1px solid #e9eef6;
+  position:sticky;
+  top:0;
+  z-index:60;
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 20px;
+}
+.logo{font-weight:700;color:var(--accent);text-decoration:none;font-size:1.15rem}
+.main-nav a{margin:0 12px;color:#0f1724;text-decoration:none;font-weight:500}
+.header-actions{display:flex;align-items:center;gap:12px}
+.lang-switch button{
+  margin-left:6px;padding:6px 10px;border-radius:8px;border:1px solid #e6eefc;background:#fff;cursor:pointer;font-weight:600
+}
+.lang.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* Default: hide mobile toggle on desktop; shown via media query */
+.menu-toggle{
+  display:none;
+  background:transparent;
+  border:0;
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hero */
+.hero {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; /* Динамическое соотношение сторон */
+  gap: 60px;
+  align-items: center;
+}
+
+/* Контентная часть */
+.hero-content .kicker {
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem); /* Размер шрифта подстраивается под экран */
+  color: var(--dark);
+  margin-bottom: 20px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-bottom: 32px;
+  max-width: 500px;
+}
+
+/* Кнопки */
+.hero-cta {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  padding: 14px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(11, 110, 253, 0.15);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(11, 110, 253, 0.25);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.btn-ghost:hover {
+  background: rgba(11, 110, 253, 0.05);
+}
+
+/* Мета-информация (Бейдж) */
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.badge {
+  background: #e7f0ff;
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.meta-text {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Изображение */
+.hero-image {
+  position: relative;
+  height: 500px; /* Фиксированная высота для десктопа */
+  width: 100%;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Заполняет контейнер без искажений */
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Адаптивность для планшетов и телефонов */
+@media (max-width: 992px) {
+  .hero {
+    padding: 40px 0;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .hero-description {
+    margin: 0 auto 32px;
+  }
+
+  .hero-cta {
+    justify-content: center;
+  }
+
+  .hero-meta {
+    justify-content: center;
+  }
+
+  .hero-image {
+    height: 350px;
+    order: -1; /* Картинка сверху на мобильных */
+  }
+}
+
+/* Cards */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:18px}
+.card{
+  background:var(--card);border-radius:12px;padding:12px;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(11,110,253,0.08)}
+.card .thumb{border-radius:10px;overflow:hidden}
+.card img{width:100%;height:170px;object-fit:cover;display:block}
+.card h3{margin:12px 0 6px;font-size:1.05rem}
+.card p{color:var(--muted);flex:1}
+.card a{margin-top:12px;text-decoration:none;color:var(--accent);font-weight:700}
+.card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.kicker{font-size:0.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+
+/* Map */
+.map-section{margin-top:28px;background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+#map{width:100%;height:480px;border-radius:8px}
+
+/* Place page */
+.place-page .place-grid{display:grid;grid-template-columns:1fr 420px;gap:20px;align-items:start}
+.place-gallery img{width:100%;border-radius:10px;object-fit:cover}
+.place-info h2{margin-top:0}
+.place-meta{color:var(--muted);font-size:0.95rem}
+
+/* Footer */
+.site-footer{margin-top:36px;background:transparent;padding:18px 0;border-top:1px solid #eef3fb}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.muted{color:var(--muted);font-size:0.95rem}
+
+/* Small UI */
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,#eef6ff,#f7fbff);color:var(--accent);font-weight:700;font-size:0.85rem}
+
+/* Responsive base adjustments */
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr}
+  .place-page .place-grid{grid-template-columns:1fr}
+  .menu-toggle{display:flex}
+  .main-nav{display:none}
+  .container{padding:16px}
+}
+
+/* Smaller phones */
+@media (max-width:520px){
+  .hero-text h1{font-size:1.6rem}
+  .card img{height:140px}
+  .card{padding:10px;border-radius:12px}
+  .card .thumb{height:120px}
+  .card h3{font-size:1rem}
+  .btn{padding:10px 14px;border-radius:10px}
+}
+
+/* ---------- Mobile hamburger & menu ---------- */
+
+/* burger lines */
+.menu-toggle .hamburger{
+  display:inline-block;
+  width:22px;
+  height:2px;
+  background:var(--accent);
+  position:relative;
+  transition:transform .25s ease;
+}
+.menu-toggle .hamburger::before,
+.menu-toggle .hamburger::after{
+  content:"";
+  position:absolute;
+  left:0;
+  width:22px;
+  height:2px;
+  background:var(--accent);
+  transition:transform .25s ease, top .25s ease, opacity .2s ease;
+}
+.menu-toggle .hamburger::before{ top:-7px; }
+.menu-toggle .hamburger::after{ top:7px; }
+
+/* open state animation */
+.menu-toggle.open .hamburger{ transform:rotate(45deg); }
+.menu-toggle.open .hamburger::before{ top:0; transform:rotate(90deg); }
+.menu-toggle.open .hamburger::after{ opacity:0; transform:translateX(-6px); }
+
+/* mobile menu panel */
+.mobile-menu{
+  display:none;
+  background:var(--card);
+  border-top:1px solid rgba(0,0,0,0.04);
+  box-shadow:0 12px 40px rgba(15,15,15,0.06);
+  position:relative;
+  z-index:9999;
+}
+.mobile-menu .container{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  padding:12px 20px;
+}
+.mobile-menu a{
+  padding:10px 0;
+  border-bottom:1px solid rgba(0,0,0,0.03);
+  text-decoration:none;
+  color:inherit;
+  font-weight:600;
+}
+.mobile-menu .mobile-lang{display:flex;gap:8px;padding-top:8px}
+.mobile-menu .mobile-lang .lang{padding:8px 10px;border-radius:8px;border:1px solid rgba(11,110,253,0.08);background:transparent}
+
+/* show mobile menu when .open class present */
+.mobile-menu.open{display:block; animation:slideDown .18s ease}
+@keyframes slideDown{from{transform:translateY(-6px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+/* map compact and toggle button for mobile */
+.map-section{padding:12px}
+@media (max-width:900px){
+  #map{height:320px}
+}
+.map-collapsed #map{height:0;overflow:hidden;padding:0;border-radius:0}
+.map-toggle{
+  display:inline-block;margin-top:10px;padding:8px 12px;border-radius:8px;background:var(--card);
+  border:1px solid rgba(0,0,0,0.06);cursor:pointer;
+}
+
+/* touch targets and accessibility */
+.menu-toggle, .mobile-menu a, .mobile-menu .lang{
+  touch-action:manipulation;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.05);
+}
+
+/* ensure mobile menu sits above other content */
+.mobile-menu{position:relative; z-index:9999}
